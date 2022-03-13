@@ -18,7 +18,7 @@ class AdminSeeder extends Seeder
     {
         $user = User::where('email','admin@gmail.com')->first();
         if (is_null($user)) {
-            $user = new User();
+            $user = new User(); 
             $user->name = "Admin";
             $user->email = "admin@gmail.com";
             $user->password = Hash::make("12345678");
