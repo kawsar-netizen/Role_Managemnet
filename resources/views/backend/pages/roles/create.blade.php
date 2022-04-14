@@ -27,7 +27,7 @@
             <!-- data table start -->
             <div class="col-12 mt-5">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body">  
                         <h4 class="header-title">Create New Role</h4>
                         @include('backend.partials.message')
                         <form action="{{route('roles.store')}}" method="POST">
@@ -38,6 +38,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">Permission</label>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="checkpermissionall" value="1">
+                                    <label class="form-check-label" for="checkpermissionall">All</label>
+                                </div>
+                                <hr>
                                 @foreach ($permission as $item)
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" name="permissions[]" id="checkpermission {{$item->id}}" value="{{$item->name}}">
@@ -55,4 +60,16 @@
 
         </div>
     </div>
+@endsection
+@section('scripts')
+        <script>
+            $("#checkpermissionall").click(function(){
+        if($(this).is(':checked')){
+            $('input[type= checkbox]').prop('checked',true);
+        }else{
+            $('input[type= checkbox]').prop('checked',false);
+        }
+            })
+        </script>
+    
 @endsection

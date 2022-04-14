@@ -2,7 +2,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index.html"><img src="{{asset('assets/images/icon/logo.png')}}" alt="logo"></a>
+                    <a href="index.html"><img src="{{ asset('assets/images/icon/logo.png') }}" alt="logo"></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -10,15 +10,42 @@
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li class="active">
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
-                                <ul class="collapse">
+                                <a href="javascript:void(0)" aria-expanded="true"><i
+                                        class="ti-dashboard"></i><span>dashboard</span></a>
+                                {{-- <ul class="collapse">
                                     <li class="active"><a href="index.html">ICO dashboard</a></li>
                                     <li><a href="index2.html">Ecommerce dashboard</a></li>
                                     <li><a href="index3.html">SEO dashboard</a></li>
-                                </ul>
+                                </ul> --}}
                             </li>
+                            <li class="active">
+                                <a href="" aria-expanded="true"><i class="fa fa-lock" aria-hidden="true"></i></i><span>Roles</span></a>
+                                {{-- <ul class="collapse">
+                                    <li class="active"><a href="index.html">ICO dashboard</a></li>
+                                    <li><a href="index2.html">Ecommerce dashboard</a></li>
+                                    <li><a href="index3.html">SEO dashboard</a></li>
+                                </ul> --}}
+                            </li>
+                            <li class="active">
+                                <a href="{{route('users.index')}}" aria-expanded="true"><i class="fa fa-users" aria-hidden="true"></i></i><span>Users</span></a>
+                                {{-- <ul class="collapse">
+                                    <li class="active"><a href="index.html">ICO dashboard</a></li>
+                                    <li><a href="index2.html">Ecommerce dashboard</a></li>
+                                    <li><a href="index3.html">SEO dashboard</a></li>
+                                </ul> --}}
+                            </li>
+                            <li class="active">
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-area-chart" aria-hidden="true"></i><span>Posts</span></a>
+                                {{-- <ul class="collapse">
+                                    <li class="active"><a href="index.html">ICO dashboard</a></li>
+                                    <li><a href="index2.html">Ecommerce dashboard</a></li>
+                                    <li><a href="index3.html">SEO dashboard</a></li>
+                                </ul> --}}
+                            </li>
+                            {{-- 
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Sidebar
+                                <a href="javascript:void(0)" aria-expanded="true"><i
+                                        class="ti-layout-sidebar-left"></i><span>Sidebar
                                         Types
                                     </span></a>
                                 <ul class="collapse">
@@ -27,7 +54,8 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-pie-chart"></i><span>Charts</span></a>
+                                <a href="javascript:void(0)" aria-expanded="true"><i
+                                        class="ti-pie-chart"></i><span>Charts</span></a>
                                 <ul class="collapse">
                                     <li><a href="barchart.html">bar chart</a></li>
                                     <li><a href="linechart.html">line Chart</a></li>
@@ -35,7 +63,8 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-palette"></i><span>UI Features</span></a>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-palette"></i><span>UI
+                                        Features</span></a>
                                 <ul class="collapse">
                                     <li><a href="accordion.html">Accordion</a></li>
                                     <li><a href="alert.html">Alert</a></li>
@@ -57,7 +86,8 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-slice"></i><span>icons</span></a>
+                                <a href="javascript:void(0)" aria-expanded="true"><i
+                                        class="ti-slice"></i><span>icons</span></a>
                                 <ul class="collapse">
                                     <li><a href="fontawesome.html">fontawesome icons</a></li>
                                     <li><a href="themify.html">themify icons</a></li>
@@ -73,9 +103,11 @@
                                 </ul>
                             </li>
                             <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li>
-                            <li><a href="invoice.html"><i class="ti-receipt"></i> <span>Invoice Summary</span></a></li>
+                            <li><a href="invoice.html"><i class="ti-receipt"></i> <span>Invoice Summary</span></a>
+                            </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layers-alt"></i> <span>Pages</span></a>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layers-alt"></i>
+                                    <span>Pages</span></a>
                                 <ul class="collapse">
                                     <li><a href="login.html">Login</a></li>
                                     <li><a href="login2.html">Login 2</a></li>
@@ -91,7 +123,8 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-exclamation-triangle"></i>
+                                <a href="javascript:void(0)" aria-expanded="true"><i
+                                        class="fa fa-exclamation-triangle"></i>
                                     <span>Error</span></a>
                                 <ul class="collapse">
                                     <li><a href="404.html">Error 404</a></li>
@@ -100,7 +133,8 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-align-left"></i> <span>Multi
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-align-left"></i>
+                                    <span>Multi
                                         level menu</span></a>
                                 <ul class="collapse">
                                     <li><a href="#">Item level (1)</a></li>
@@ -114,7 +148,7 @@
                                     </li>
                                     <li><a href="#">Item level (1)</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                         </ul>
                     </nav>
                 </div>

@@ -93,7 +93,7 @@
     </div>
     <!-- sales report area end -->
     <!-- overview area start -->
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-xl-9 col-lg-8">
             <div class="card">
                 <div class="card-body">
@@ -116,10 +116,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- overview area end -->
     <!-- market value area start -->
-    <div class="row mt-5 mb-5">
+    {{-- <div class="row mt-5 mb-5">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -199,12 +199,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- market value area end -->
     <!-- row area start -->
     <div class="row">
         <!-- Live Crypto Price area start -->
-        <div class="col-lg-4">
+        {{-- <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title">Live Crypto Price</h4>
@@ -228,10 +228,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Live Crypto Price area end -->
         <!-- trading history area start -->
-        <div class="col-lg-8 mt-sm-30 mt-xs-30">
+        {{-- <div class="col-lg-8 mt-sm-30 mt-xs-30">
             <div class="card">
                 <div class="card-body">
                     <div class="d-sm-flex justify-content-between align-items-center">
@@ -325,13 +325,13 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- trading history area end -->
     </div>
     <!-- row area end -->
     <div class="row mt-5">
         <!-- latest news area start -->
-        <div class="col-xl-6">
+        {{-- <div class="col-xl-6">
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title">Latest News</h4>
@@ -359,10 +359,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- latest news area end -->
         <!-- exchange area start -->
-        <div class="col-xl-6 mt-md-30 mt-xs-30 mt-sm-30">
+        {{-- <div class="col-xl-6 mt-md-30 mt-xs-30 mt-sm-30">
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title">Exchange</h4>
@@ -384,7 +384,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- exchange area end -->
     </div>
     <!-- row area start-->
