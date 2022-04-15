@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\backend;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
-use Spatie\Permission\Models\Permission;
 
 class RolesController extends Controller
 {
@@ -17,8 +15,8 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = Role::paginate(10);
-        return view('backend.pages.roles.index',compact('roles'));
+        $roles = Role::orderBy('id','desc')->get();
+        return view('backend.pages.roles.index',['roles' => $roles]);
     }
 
     /**
@@ -28,8 +26,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        $permission = Permission::all();
-        return view('backend.pages.roles.create',compact('permission'));
+        return view('backend.pages.roles.create');
     }
 
     /**
@@ -40,19 +37,7 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|max:100|unique:roles'
-        ],[
-            'required.name' => 'Please giva a role name'
-        ]);
-        
-         $role=Role::create(['name' => $request->name]);
-        //  $role=DB::table('roles')->where('name',$request->name)->first();
-         $permissions = $request->input('permissions');
-         if(!empty($permissions)){
-             $role->syncPermissions($permissions);
-         }
-         return back();
+        //
     }
 
     /**

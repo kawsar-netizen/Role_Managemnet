@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\backend\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\backend\UserController;
+use App\Http\Controllers\backend\RolesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,6 @@ Route::get('/', function () {
    // Route::resource('roles','App\Http\Controllers\backend\RolesController');
 
    Route::resource('users',UserController::class);
+
+   Route::resource('roles',RolesController::class);
 

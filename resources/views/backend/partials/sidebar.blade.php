@@ -19,7 +19,7 @@
                                 </ul> --}}
                             </li>
                             <li class="active">
-                                <a href="" aria-expanded="true"><i class="fa fa-lock" aria-hidden="true"></i></i><span>Roles</span></a>
+                                <a href="{{route('roles.index')}}" aria-expanded="true"><i class="fa fa-lock" aria-hidden="true"></i></i><span>Roles</span></a>
                                 {{-- <ul class="collapse">
                                     <li class="active"><a href="index.html">ICO dashboard</a></li>
                                     <li><a href="index2.html">Ecommerce dashboard</a></li>

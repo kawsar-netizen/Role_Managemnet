@@ -36,27 +36,60 @@
             <div class="col-12 mt-5">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="header-title">Role List</h4>
+                        {{-- <h4 class="header-title">Role List</h4> --}}
+                        <a href="{{route('roles.create')}}">
+                            <button type="button" class="btn btn-primary mb-5">Create New Role</button>
+                        </a>
                         <div class="data-tables">
                             <table id="dataTable" class="text-center">
                                 <thead class="bg-light text-capitalize">
                                     <tr>
                                         <th>Sl</th>
                                         <th>Name</th>
+                                        <th>Slug</th>
+                                        <th>Permission</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($roles as $item)
                                         <tr>
-                                            <td>{{$loop->iteration}}</td>
-                                            <td>{{$item->name}}</td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->slug }}</td>
                                             <td>
                                                 --
                                             </td>
+                                            <th>
+                                                <form action="{{ route('roles.destroy', $item->id) }}" method="post">
+                                                    <a href="{{ route('roles.show', $item->id) }}"><button type="button"
+                                                            class="btn-xs btn btn-success"><i
+                                                                class="fa fa-eye"></i></i></button>
+                                                    </a>
+                                                    <a href="{{ route('roles.edit', $item->id) }}"><button type="button"
+                                                            class="btn-xs btn btn-primary"><i
+                                                                class="fa fa-edit"></i></button>
+                                                    </a>
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button class="btn-xs btn btn-danger" type="submit"
+                                                        onclick="return confirm('Are You Sure To Deleted !')">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </th>
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Sl</th>
+                                        <th>Name</th>
+                                        <th>Slug</th>
+                                        <th>Permission</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -76,8 +109,8 @@
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
     <script>
         /*================================
-        datatable active
-        ==================================*/
+                datatable active
+                ==================================*/
         if ($('#dataTable').length) {
             $('#dataTable').DataTable({
                 responsive: true
