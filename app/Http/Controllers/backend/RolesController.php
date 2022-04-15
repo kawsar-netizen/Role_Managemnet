@@ -37,7 +37,11 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $roleStore = new Role();
+        $roleStore->name = $request->name;
+        $roleStore->slug = $request->slug;
+        $roleStore->save();
+        return redirect()->route('roles.index')->with('message','Role has been created successfully!!');
     }
 
     /**
@@ -48,7 +52,8 @@ class RolesController extends Controller
      */
     public function show($id)
     {
-        //
+        $roleShow = Role::findOrFail($id);
+        return view('backend.pages.roles.show',compact('roleShow'));
     }
 
     /**
@@ -59,7 +64,8 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $roleEdit = Role::findOrFail($id);
+        return view('backend.pages.roles.edit',compact('roleEdit'));
     }
 
     /**
@@ -71,7 +77,11 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $roleUpdate = Role::findOrFail($id);
+        $roleUpdate->name = $request->name;
+        $roleUpdate->slug = $request->slug;
+        $roleUpdate->save();
+        return redirect()->route('roles.index')->with('message','Role has been updated successfully!!');
     }
 
     /**
@@ -82,6 +92,8 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $roleDestroy = Role::findOrFail($id);
+        $roleDestroy->delete();
+        return back();
     }
 }

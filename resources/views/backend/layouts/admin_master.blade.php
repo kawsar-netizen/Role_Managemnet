@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    
+
     <title>@yield('title')</title>
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
@@ -23,10 +23,11 @@
     <link rel="stylesheet" href="{{ asset('assets/css/default-css.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+
     <!-- modernizr css -->
     <script src="{{ asset('assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
     @yield('styles')
-
+    @yield('css_role_page')
 </head>
 
 <body>
@@ -263,7 +264,7 @@
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     @yield('scripts')
-  
+    @yield('js_role_page')
 </body>
 
 </html>

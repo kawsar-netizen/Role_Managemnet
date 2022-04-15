@@ -2,7 +2,9 @@
 @section('title')
     Role Create | Admin Panel
 @endsection
-
+@section('css_role_page')
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-tagsinput.css') }}">
+@endsection
 @section('content')
     <!-- page title area start -->
     <div class="page-title-area">
@@ -27,15 +29,26 @@
             <!-- data table start -->
             <div class="col-12 mt-5">
                 <div class="card">
-                    <div class="card-body">  
+                    <div class="card-body">
                         <h4 class="header-title">Create New Role</h4>
                         @include('backend.partials.message')
-                        <form action="{{route('roles.store')}}" method="POST">
+                        <form action="{{ route('roles.store') }}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="name">Role Name</label>
-                                <input type="text" class="form-control" name='name'placeholder="Enter role name">
-                            </div> 
+                                <input type="text" class="form-control" id="role_name" name='name' placeholder="Enter role name"
+                                    value="{{ old('name') }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="slug">Role Slug</label>
+                                <input type="text" class="form-control" tag="role_slug" name='slug' id="role_slug" placeholder="Enter role slug"
+                                    value="{{ old('slug') }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="roles_permission">Add Permission</label>
+                                <input type="text" class="form-control" name='roles_permission' data-role="tagsinput"
+                                    placeholder="Enter role permission" value="{{ old('roles_permissions') }}">
+                            </div>
                             <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Add</button>
                         </form>
                     </div>
@@ -45,4 +58,17 @@
 
         </div>
     </div>
+@endsection
+@section('js_role_page')
+    <script src="{{ asset('assets/js/bootstrap-tagsinput.js') }}"></script>
+    <script>
+        $('document').ready(function() {
+            $('#role_name').keyup(function(e){
+                var str = $('#role_name').val();
+                str = str.replace(/\W+(!?$)/g, '-').toLowercase();
+                $('#role_slug').val(str);
+                $('role_slug').attr('placeholder',str);
+            })
+        });
+    </script>
 @endsection
