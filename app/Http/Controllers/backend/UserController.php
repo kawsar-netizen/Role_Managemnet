@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\backend;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
@@ -26,9 +27,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create( Request $request)
     {
-        return view('backend.pages.users.create');
+        if($request->ajax()){
+            return $request->role_id;
+            $roles = Role::where('id',$request->role_id);
+        }
+        $all_role = Role::all();
+        return view('backend.pages.users.create',compact('all_role'));
     }
 
     /**

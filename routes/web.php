@@ -34,4 +34,3 @@ Route::get('/', function () {
    Route::resource('users',UserController::class);
 
    Route::resource('roles',RolesController::class);
-

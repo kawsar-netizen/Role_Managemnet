@@ -265,6 +265,7 @@
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     @yield('scripts')
     @yield('js_role_page')
+    @yield('js_user_page')
 </body>
 
 </html>
