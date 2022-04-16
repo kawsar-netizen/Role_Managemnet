@@ -36,17 +36,17 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name">Role Name</label>
-                                <input type="text" class="form-control" id="role_name" name='name' placeholder="Enter role name"
-                                    value="{{ old('name') }}">
+                                <input type="text" class="form-control" id="role_name" name='name'
+                                    placeholder="Enter role name" value="{{ old('name') }}">
                             </div>
                             <div class="form-group">
                                 <label for="slug">Role Slug</label>
-                                <input type="text" class="form-control" tag="role_slug" name='slug' id="role_slug" placeholder="Enter role slug"
-                                    value="{{ old('slug') }}">
+                                <input type="text" class="form-control" tag="role_slug" name='slug' id="role_slug"
+                                    placeholder="Enter role slug" value="{{ old('slug') }}">
                             </div>
                             <div class="form-group">
-                                <label for="roles_permission">Add Permission</label>
-                                <input type="text" class="form-control" name='roles_permission' data-role="tagsinput"
+                                <label for="roles_permissions">Add Permission</label>
+                                <input type="text" class="form-control" name='roles_permissions' data-role="tagsinput"
                                     placeholder="Enter role permission" value="{{ old('roles_permissions') }}">
                             </div>
                             <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Add</button>
@@ -61,14 +61,17 @@
 @endsection
 @section('js_role_page')
     <script src="{{ asset('assets/js/bootstrap-tagsinput.js') }}"></script>
+
+    {{-- make slug script tag code --}}
+
     <script>
         $('document').ready(function() {
-            $('#role_name').keyup(function(e){
+            $('#role_name').keyup(function(e) {
                 var str = $('#role_name').val();
-                str = str.replace(/\W+(!?$)/g, '-').toLowercase();
+                str = str.replace(/\W+(?!$)/g, '-').toLowerCase();
                 $('#role_slug').val(str);
-                $('role_slug').attr('placeholder',str);
-            })
+                $('#role_slug').attr('placeholder', str);
+            });
         });
     </script>
 @endsection

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\backend;
 
 use App\Models\Role;
+
+use App\Models\Permission;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -37,10 +39,21 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
+        
         $roleStore = new Role();
         $roleStore->name = $request->name;
         $roleStore->slug = $request->slug;
         $roleStore->save();
+        $listOfPermissions = explode(',', $request->roles_permissions);
+        foreach($listOfPermissions as $permission){
+            $permissions = new Permission();
+            $permissions->name = $permission;
+            $permissions->slug = strtolower(str_replace("","-",$permission));
+            $permissions->save();
+            $roleStore->permissions()->attach($permissions->id);
+            $roleStore->save();
+        }
+        
         return redirect()->route('roles.index')->with('message','Role has been created successfully!!');
     }
 
@@ -81,6 +94,18 @@ class RolesController extends Controller
         $roleUpdate->name = $request->name;
         $roleUpdate->slug = $request->slug;
         $roleUpdate->save();
+        
+        $roleUpdate->permissions()->delete();
+        $roleUpdate->permissions()->detach();
+        $listOfPermissions = explode(',', $request->roles_permissions);
+        foreach($listOfPermissions as $permission){
+            $permissions = new Permission();
+            $permissions->name = $permission;
+            $permissions->slug = strtolower(str_replace("","-",$permission));
+            $permissions->save();
+            $roleUpdate->permissions()->attach($permissions->id);
+            $roleUpdate->save();
+        }
         return redirect()->route('roles.index')->with('message','Role has been updated successfully!!');
     }
 
@@ -93,7 +118,9 @@ class RolesController extends Controller
     public function destroy($id)
     {
         $roleDestroy = Role::findOrFail($id);
+        $roleDestroy->permissions()->delete();
         $roleDestroy->delete();
+        $roleDestroy->permissions()->detach();
         return back();
     }
 }

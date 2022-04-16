@@ -37,7 +37,7 @@
                 <div class="card">
                     <div class="card-body">
                         {{-- <h4 class="header-title">Role List</h4> --}}
-                        <a href="{{route('roles.create')}}">
+                        <a href="{{ route('roles.create') }}">
                             <button type="button" class="btn btn-primary mb-5">Create New Role</button>
                         </a>
                         <div class="data-tables">
@@ -58,7 +58,13 @@
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->slug }}</td>
                                             <td>
-                                                --
+                                                @if ($item->permissions != null)
+                                                    @foreach ($item->permissions as $permission)
+                                                        <span class=" badge badge-info">
+                                                            {{ $permission->name }}
+                                                        </span>
+                                                    @endforeach
+                                                @endif
                                             </td>
                                             <th>
                                                 <form action="{{ route('roles.destroy', $item->id) }}" method="post">
@@ -109,8 +115,8 @@
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
     <script>
         /*================================
-                datatable active
-                ==================================*/
+                        datatable active
+                        ==================================*/
         if ($('#dataTable').length) {
             $('#dataTable').DataTable({
                 responsive: true
