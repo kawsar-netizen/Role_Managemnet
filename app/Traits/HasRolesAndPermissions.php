@@ -3,7 +3,7 @@ namespace app\Traits;
 
 use App\Models\Permission;
 use App\Models\Role;
-trait HasRolesAndPermissiions
+trait HasRolesAndPermissions
 
 {
     public function roles(){

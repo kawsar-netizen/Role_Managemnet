@@ -36,10 +36,10 @@
             <div class="col-12 mt-5">
                 <div class="card">
                     <div class="card-body">
-                                {{-- <h4 class="header-title">User List</h4> --}}
-                                <a href="{{route('users.create')}}">
-                                    <button type="button" class="btn btn-primary mb-5">Create New User</button>
-                                </a>
+                        {{-- <h4 class="header-title">User List</h4> --}}
+                        <a href="{{ route('users.create') }}">
+                            <button type="button" class="btn btn-primary mb-5">Create New User</button>
+                        </a>
                         <div class="data-tables">
                             <table id="dataTable" class="text-center">
                                 <thead class="bg-light text-capitalize">
@@ -58,8 +58,24 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->email }}</td>
-                                            <td>--</td>
-                                            <td>--</td>
+                                            <td>
+                                                @if ($item->roles->isNotEmpty())
+                                                    @foreach ($item->roles as $role)
+                                                        <span class="badge badge-info">
+                                                            {{ $role->name }}
+                                                        </span>
+                                                    @endforeach
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($item->permissions->isNotEmpty())
+                                                    @foreach ($item->permissions as $permission)
+                                                        <span class="badge badge-info">
+                                                            {{ $permission->name }}
+                                                        </span>
+                                                    @endforeach
+                                                @endif
+                                            </td>
                                             <td>
                                                 <form action="{{ route('users.destroy', $item->id) }}" method="post">
                                                     <a href="{{ route('users.show', $item->id) }}"><button type="button"
@@ -110,8 +126,8 @@
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
     <script>
         /*================================
-                            datatable active
-                            ==================================*/
+                                    datatable active
+                                    ==================================*/
         if ($('#dataTable').length) {
             $('#dataTable').DataTable({
                 responsive: true

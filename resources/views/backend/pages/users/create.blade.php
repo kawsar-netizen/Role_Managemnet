@@ -112,8 +112,10 @@
                 var role = $(this).find(':selected');
                 var role_id = role.data('role-id');
                 var role_slug = role.data('role-slug');
+                
+                permissions_checkbox_list.empty();
 
-                $ajax({
+                $.ajax({
                     'url': '/users/create',
                     'method': 'get',
                     'dataType': 'json',
@@ -122,13 +124,17 @@
                         role_slug: role_slug,
                     }
                 }).done(function(data) {
+
                     console.log(data);
                     permissions_box.show();
 
                     $.each(data, function(index, element) {
                         $(permissions_checkbox_list).append(
                             '<div class="custom-control custom-checkbox">' +
-                            '<input class="custom-control-input" type="checkbox" name="permissions[]">'
+                            '<input class="custom-control-input" type="checkbox" name="permissions[]" id="' +
+                            element.slug + '" value="' + element.id + '">' +
+                            '<label class="custom-control-label" for="' + element
+                            .slug + '">' + element.name + '</label>' +
                             '</div>'
                         );
                     });

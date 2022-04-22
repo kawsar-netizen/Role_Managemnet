@@ -30,8 +30,9 @@ class UserController extends Controller
     public function create( Request $request)
     {
         if($request->ajax()){
-            return $request->role_id;
-            $roles = Role::where('id',$request->role_id);
+            $roles = Role::where('id',$request->role_id)->first();
+            $permissions = $roles->permissions;
+            return $permissions;
         }
         $all_role = Role::all();
         return view('backend.pages.users.create',compact('all_role'));
@@ -62,6 +63,17 @@ class UserController extends Controller
         $userCreate->email = $request->email;
         $userCreate->password = Hash::make($request->password);
         $userCreate->save();
+
+        if($request->role != null){
+            $userCreate->roles()->attach($request->role);
+            $userCreate->save();
+        }
+        if($request->permissions != null){
+            foreach($request->permissions as $permission){
+                $userCreate->permissions()->attach($permission);
+                $userCreate->save();
+            }
+        }
         return redirect()->route('users.index');
     }
 

@@ -63,7 +63,7 @@
                                                         <span class=" badge badge-info">
                                                             {{ $permission->name }}
                                                         </span>
-                                                    @endforeach
+                                                    @endforeach   
                                                 @endif
                                             </td>
                                             <th>
