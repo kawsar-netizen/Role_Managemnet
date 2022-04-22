@@ -98,7 +98,11 @@ class UserController extends Controller
     public function edit($id)
     {
         $userEdit = User::findOrFail($id);
-        return view('backend.pages.users.edit',compact('userEdit'));
+        $roles = Role::get();
+        $userRole = $userEdit->roles->first();
+        $rolePermissions = $userRole->allPermissions;
+        $userPermissions = $userEdit->permissions;
+        return view('backend.pages.users.edit',compact('userEdit','roles','userRole','rolePermissions','userPermissions'));
     }
 
     /**

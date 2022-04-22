@@ -75,14 +75,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="role">Select Role</label>
-                                <select name="roel" id="role" class="role form-control">
+                                <select name="role" id="role" class="role form-control">
                                     <option value="">--- Select Role ---</option>
                                     @foreach ($all_role as $item)
                                         <option data-role-id="{{ $item->id }}" data-role-slug="{{ $item->slug }}"
                                             value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
-
                             </div>
                             <div class="permissions_box">
                                 <label for="roles">Select Permisstions</label>

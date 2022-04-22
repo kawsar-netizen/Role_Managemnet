@@ -16,7 +16,7 @@
                 <p class="card-text">
                     @if ($userShow->roles->isNotEmpty())
                         @foreach ($userShow->roles as $role)
-                            <span class="badge badge-info">
+                            <span class="badge badge-danger">
                                 {{ $role->name }}
                             </span>
                         @endforeach

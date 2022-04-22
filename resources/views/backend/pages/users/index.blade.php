@@ -61,7 +61,7 @@
                                             <td>
                                                 @if ($item->roles->isNotEmpty())
                                                     @foreach ($item->roles as $role)
-                                                        <span class="badge badge-info">
+                                                        <span class="badge badge-danger">
                                                             {{ $role->name }}
                                                         </span>
                                                     @endforeach
@@ -70,7 +70,7 @@
                                             <td>
                                                 @if ($item->permissions->isNotEmpty())
                                                     @foreach ($item->permissions as $permission)
-                                                        <span class="badge badge-info">
+                                                        <span class="badge badge-success">
                                                             {{ $permission->name }}
                                                         </span>
                                                     @endforeach
